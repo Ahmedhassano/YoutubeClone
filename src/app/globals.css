@@ -2,26 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer components{
+    .effect-hover{
+      @apply hover:bg-[#42424286]
+    }
+    .icon{
+        @apply relative cursor-pointer text-white  
+    }
+    .icon-text{
+        @apply absolute left-1/2 bottom-0 translate-y-0 -translate-x-1/2 opacity-0
+         pointer-events-none py-1 px-2 rounded-sm bg-zinc-500
+        text-sm  whitespace-nowrap
+       group-hover:translate-y-12  
+        group-hover:opacity-100  
+    }
+    .overly{
+        @apply hidden w-screen h-screen fixed top-0 left-0 bg-[#00000050]  z-30
+    }
+    .watch-Grid{
+        grid-template-areas: "video video SuggestedVideos"
+                             "Comments Comments SuggestedVideos";
+    }
+    .watchPage-grid-for-screen{
+        grid-template-areas: "video video video"
+                             "SuggestedVideos SuggestedVideos SuggestedVideos"
+                             "Comments Comments Comments";  
+                            }
 }
+@layer base{
+    *::-webkit-scrollbar    {
+     @apply w-1 h-1 
+    }
+    *::-webkit-scrollbar-thumb    {
+        @apply bg-gray-500 rounded-full
+       }
+    input,button{
+        border: none;
+        outline: none;
+  
+    }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
 }
+.box{
+    grid-template-rows: masonry;
+}
+.box div {
+  padding: 10px ;
+  border:5px solid blue  ;
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
